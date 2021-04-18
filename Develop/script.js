@@ -29,7 +29,7 @@ for (var i = 8; i < 17; i++) {
     $(".container").append(`
     <div class="row timeblock" style="width:100%" id="hour${i}">
         <div class="hour">
-            ${i>12 ? i-12 : i}:00 ${i>12 ? "PM" : "AM"}
+            ${i<=12 ? i : i-12}:00 ${i<12 ? "AM" : "PM"}
             </div>
             <textarea class="description">
             </textarea>
@@ -40,20 +40,35 @@ for (var i = 8; i < 17; i++) {
     
 }
 
-
+$("textarea").next(".saveBtn").saveData;
 //create localstorage function that stores todo for a given hour
-document.querySelector(".saveBtn").addEventListener("click", saveData)
 
+//create click event on saveBtn, grab corresponding text from the textarea in the same row 
+var arrayButtons = document.querySelectorAll(".saveBtn");
+for( var i = 0; i< arrayButtons.length; i++) {
+    arrayButtons[i].addEventListener("click", saveData)
+}
+// arrayButtons.addEventListener("click", saveData)
+
+var saveD = document.querySelectorAll(".description");
+// console.log("what is this", saveD);
+var userInput = [];
+for (var i = 0; i < saveD.length; i++) {
+    //console.log("this is DI", saveD[i])
+    userInput.push(saveD[i]);
+}
 
 function saveData(){
-    localStorage.getItem("description", saveInfo);
+    console.log('Button working')
+    //function saveTodo(key, val)
+    localStorage.setItem("description", $('textarea.description').val());
 }
-//function saveTodo(key, val)
-// function saveTodo ("saveDescription",)
-//create click event on saveBtn, grab corresponding text from the textarea in the same row 
+
+var localStorageData = localStorage.getItem("description", $('textarea.description').val());
+
 //research DOM traversal using Jquery hint - siblings
 //var saveInfo = $("textarea.description").next().saveData;
-$("button"). next(".saveBtn").saveData
+// $("button"). next(".saveBtn").saveData
 
 
 
