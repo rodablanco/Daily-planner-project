@@ -44,8 +44,8 @@ for (var i = 8; i < 17; i++) {
 //create localstorage function that stores todo for a given hour
 document.querySelector(".saveBtn").addEventListener("click", saveData)
 
+
 function saveData(){
-    var saveInfo = $("textarea.description").next().saveData;
     localStorage.getItem("description", saveInfo);
 }
 //function saveTodo(key, val)
@@ -53,7 +53,7 @@ function saveData(){
 //create click event on saveBtn, grab corresponding text from the textarea in the same row 
 //research DOM traversal using Jquery hint - siblings
 //var saveInfo = $("textarea.description").next().saveData;
-
+$("button"). next(".saveBtn").saveData
 
 
 
